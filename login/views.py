@@ -6,6 +6,7 @@ from django.shortcuts import render, get_object_or_404,redirect
 from django.urls import path
 from django.conf.urls import url
 from django.contrib.auth import logout
+from django import forms
 
 
 def group_check(request):
@@ -57,8 +58,11 @@ def register_student(request):
           user.save()
           user.groups.add(2)
           print('user created')
+          return redirect('/')
           #RETURN OLARAK HATA METNİ İLE BİRLİKTE ANASAYFAYA YONLENDİR!
-
-        return redirect('/')
+       
+            
+            #raise forms.ValidationError("Your passwords do not match") 
+        return redirect("register_student")
     else:
         return render(request, "register_student.html")
