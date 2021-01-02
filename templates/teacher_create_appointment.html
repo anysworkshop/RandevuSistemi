@@ -9,13 +9,13 @@
 
         <div class="row main_boder">
           <div class="col-sm-7">
-            <h3 class="appointmnet_list">Create Appointment</h3>
+            <h3 class="appointmnet_list">Randevu Oluştur</h3>
           </div>
           <div class="col-sm-5">
             <form class="form-inline my-2 my-lg-0" method="GET" action="">
-              <input class="form-control mr-sm-2" type="text" name="q" placeholder="Search Date"
-                placeholder="Search With Name" aria-label="Search">
-              <button class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Search">Search</button>
+              <input class="form-control mr-sm-2" type="text" name="q" placeholder="Tarihle Ara"
+                placeholder="İsimle Ara" aria-label="Search">
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Search">Ara</button>
             </form>
 
           </div>
@@ -67,8 +67,8 @@
       <table class="table">
         <thead>
           <tr>
-            <th scope="col">Date</th>
-            <th scope="col">Time</th>
+            <th scope="col">Tarih</th>
+            <th scope="col">Zaman</th>
             <th scope="col">Düzenle</th>
 
           </tr> 
@@ -82,7 +82,7 @@
             <td>{{appoint.time_start}} - {{appoint.time_end}}</td>
             <td><a href='{% url "appointment_delete" id=appoint.id %}'><button type="submit" class="btn btn-danger"><i
                     class="fas fa-trash-alt"></i></button></a> </td>
-            <td><button title="Already booked, Not editable" type="button" class="btn btn-primary">Booked By:
+            <td><button title="Already booked, Not editable" type="button" class="btn btn-primary">Randevuyu Alan:
                 {{appoint.appointment_with}}</button></td>
             </td>
           </tr>
@@ -118,7 +118,7 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
-        YILDIZ TECHNICAL UNIVERSITY
+        YILDIZ TEKNİK ÜNİVERSİTESİ
       </div>
 
     </div>
