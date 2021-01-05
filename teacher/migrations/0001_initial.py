@@ -20,7 +20,6 @@ class Migration(migrations.Migration):
                 ('date', models.CharField(max_length=50)),
                 ('time_start', models.CharField(max_length=50)),
                 ('time_end', models.CharField(max_length=50)),
-                ('room_number', models.CharField(max_length=50)),
                 ('appointment_with', models.CharField(max_length=50)),
                 ('update_time', models.DateField(auto_now=True)),
                 ('first_time', models.DateField(auto_now_add=True)),

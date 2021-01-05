@@ -22,7 +22,7 @@ def quick_appointment(request):
 
 		appointments= {
 		    "query": appointment_list,
-		    "user_name":user_name
+		    "user_name":user_name,
 		}
 		return render(request, 'student_quick_appointment.html', appointments )
 	else:

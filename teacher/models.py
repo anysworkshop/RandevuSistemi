@@ -7,7 +7,6 @@ class Appointment(models.Model):
 	date=models.CharField(max_length=50)
 	time_start=models.CharField(max_length=50)
 	time_end=models.CharField(max_length=50)
-	room_number=models.CharField(max_length=50)
 	appointment_with=models.CharField(max_length=50,blank=True)
 	update_time=models.DateField(auto_now=True, auto_now_add=False)
 	first_time=models.DateField(auto_now=False, auto_now_add=True)

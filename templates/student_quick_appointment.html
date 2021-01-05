@@ -26,7 +26,6 @@
           <thead>
             <tr>
               <th scope="col">Öğretmen Adı</th>
-              <th scope="col">Profil Resmi</th>
               <th scope="col">Tarih</th>
               <th scope="col">Uygun Saatler</th>
             </tr>
@@ -34,8 +33,8 @@
           <tbody>{% for appoint in query %}
             {% if appoint.appointment_with == '' %}
             <tr>
+              
               <th scope="row">{{appoint.user.first_name}} {{appoint.user.last_name}}</th>
-              <td><img class="avatar" src="http://127.0.0.1:8000/static/css/image/teacher.png"></td>
               <td>{{appoint.date}}</td>
               <td>
                 <span class="inline">{{appoint.time_start}} - {{appoint.time_end}}
