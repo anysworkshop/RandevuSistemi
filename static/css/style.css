@@ -2,8 +2,7 @@
     padding-top: 217px;
 }
 .login {
-    height: 723px;
-    background: url(image/background.jpg);
+    background:mediumspringgreen    ;
 }
 
 h2.Login {
@@ -30,7 +29,7 @@ input.form-control.submit {
     padding-top: 20px;
 }
 
-h3.appointmnet_list {
+h3.appointment_list {
     padding: 19px 0px 10px 0px;
     font-weight: normal;
     font-size: 27px;
@@ -70,14 +69,14 @@ li.nav-item p {
     padding: 8px;
 }
 
-h3.appointmnet_list {
+h3.appointment_list {
     padding: 19px 0px 6px 0px;
     margin-bottom: 27px;
     font-weight: normal;
     font-size: 27px;
 }
 
-.min-height h3.appointmnet_list {
+.min-height h3.appointment_list {
     padding: 0px 0px 6px 0px;
     margin-bottom: 9px;
     font-weight: normal;

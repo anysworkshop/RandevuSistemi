@@ -10,7 +10,7 @@ class Appointment(models.Model):
 	room_number=models.CharField(max_length=50)
 	appointment_with=models.CharField(max_length=50,blank=True)
 	update_time=models.DateField(auto_now=True, auto_now_add=False)
-	frist_time=models.DateField(auto_now=False, auto_now_add=True)
+	first_time=models.DateField(auto_now=False, auto_now_add=True)
     
     #show filed in admin panel
 	def __str__(self):
@@ -19,7 +19,5 @@ class Appointment(models.Model):
 		return self.time_start
 	def __str__(self): 
 		return self.time_end
-	def __str__(self): 
-		return self.room_number
 	def __str__(self): 
 		return self.appointment_with

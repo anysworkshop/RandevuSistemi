@@ -1,8 +1,3 @@
-/*!
- * datepair.js v0.4.15 - A javascript plugin for intelligently selecting date and time ranges inspired by Google Calendar.
- * Copyright (c) 2016 Jon Thornton - http://jonthornton.github.com/Datepair.js
- * License: MIT
- */
 
 (function(window, document) {
 
@@ -23,8 +18,6 @@
 		return out;
 	}
 	
-	// IE's custom event support is totally borked.
-	// Use jQuery if possible
 	function triggerSimpleCustomEvent(el, eventName) {
 		if (jq) {
 			jq(el).trigger(eventName);

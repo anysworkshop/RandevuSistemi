@@ -1,8 +1,4 @@
-/*!
- * jquery-timepicker v1.11.14 - A jQuery timepicker plugin inspired by Google Calendar. It supports both mouse and keyboard navigation.
- * Copyright (c) 2015 Jon Thornton - http://jonthornton.github.com/jquery-timepicker/
- * License: MIT
- */
+
 
 (function(factory) {
   if (
@@ -51,21 +47,17 @@
       if (seconds === null) {
         return null;
       } else if (typeof settings.step !== "number") {
-        // TODO: nearest fit irregular steps
         return seconds;
       } else {
-        var offset = seconds % (settings.step * 60); // step is in minutes
+        var offset = seconds % (settings.step * 60); 
 
         var start = settings.minTime || 0;
 
-        // adjust offset by start mod step so that the offset is aligned not to 00:00 but to the start
         offset -= start % (settings.step * 60);
 
         if (offset >= settings.step * 30) {
-          // if offset is larger than a half step, round up
           seconds += settings.step * 60 - offset;
         } else {
-          // round down
           seconds -= offset;
         }
 
@@ -91,7 +83,6 @@
       return this.each(function() {
         var self = $(this);
 
-        // pick up settings from data attributes
         var attributeOptions = [];
         for (var key in _DEFAULTS) {
           if (self.data(key)) {
@@ -146,18 +137,15 @@
       }
 
       if (_hideKeyboard(self)) {
-        // block the keyboard on mobile devices
         self.blur();
       }
 
       var list = self.data("timepicker-list");
 
-      // check if input is readonly
       if (self.prop("readonly")) {
         return;
       }
 
-      // check if list needs to be rendered
       if (
         !list ||
         list.length === 0 ||
@@ -174,22 +162,18 @@
       self.data("ui-timepicker-value", self.val());
       _setSelected(self, list);
 
-      // make sure other pickers are hidden
       methods.hide();
 
-      // position the dropdown relative to the input
       list.show();
       var listOffset = {};
 
       if (settings.orientation.match(/r/)) {
-        // right-align the dropdown
         listOffset.left =
           self.offset().left +
           self.outerWidth() -
           list.outerWidth() +
           parseInt(list.css("marginLeft").replace("px", ""), 10);
       } else {
-        // left-align the dropdown
         listOffset.left =
           self.offset().left +
           parseInt(list.css("marginLeft").replace("px", ""), 10);
@@ -210,14 +194,12 @@
       }
 
       if (verticalOrientation == "t") {
-        // position the dropdown on top
         list.addClass("ui-timepicker-positioned-top");
         listOffset.top =
           self.offset().top -
           list.outerHeight() +
           parseInt(list.css("marginTop").replace("px", ""), 10);
       } else {
-        // put it under the input
         list.removeClass("ui-timepicker-positioned-top");
         listOffset.top =
           self.offset().top +
@@ -227,7 +209,6 @@
 
       list.offset(listOffset);
 
-      // position scrolling
       var selected = list.find(".ui-timepicker-selected");
 
       if (!selected.length) {
@@ -239,7 +220,6 @@
         }
       }
 
-      // if not found or disabled, intelligently find first selectable element
       if (!selected.length || selected.hasClass("ui-timepicker-disabled")) {
         selected = list.find("li:not(.ui-timepicker-disabled):first");
       }
@@ -252,7 +232,6 @@
         list.scrollTop(0);
       }
 
-      // prevent scroll propagation
       if (settings.stopScrollPropagation) {
         $(
           document
@@ -263,7 +242,6 @@
         });
       }
 
-      // attach close handlers
       $(document).on(
         "touchstart.ui-timepicker mousedown.ui-timepicker",
         _closeHandler
@@ -360,7 +338,6 @@
         relative_date = new Date();
       }
 
-      // construct a Date from relative date, and offset's time
       var time = new Date(relative_date);
       time.setHours(offset / 3600);
       time.setMinutes((offset % 3600) / 60);
@@ -403,7 +380,6 @@
     remove: function() {
       var self = this;
 
-      // check if this element is a timepicker
       if (!self.hasClass("ui-timepicker-input")) {
         return;
       }
@@ -414,7 +390,6 @@
       self.removeData("timepicker-settings");
       self.off(".timepicker");
 
-      // timepicker-list won't be present unless the user has interacted with this timepicker
       if (self.data("timepicker-list")) {
         self.data("timepicker-list").remove();
       }
@@ -429,7 +404,7 @@
     }
   };
 
-  // private methods
+
 
   function _isVisible(elem) {
     var el = elem[0];
@@ -482,7 +457,7 @@
     }
 
     if (settings.disableTimeRanges.length > 0) {
-      // convert string times to integers
+   
       for (var i in settings.disableTimeRanges) {
         settings.disableTimeRanges[i] = [
           _time2int(settings.disableTimeRanges[i][0]),
@@ -490,7 +465,7 @@
         ];
       }
 
-      // sort by starting time
+  
       settings.disableTimeRanges = settings.disableTimeRanges.sort(function(
         a,
         b
@@ -498,7 +473,7 @@
         return a[0] - b[0];
       });
 
-      // merge any overlapping ranges
+
       for (var i = settings.disableTimeRanges.length - 1; i > 0; i--) {
         if (
           settings.disableTimeRanges[i][0] <=
@@ -596,7 +571,6 @@
       settings.maxTime !== null ? settings.maxTime : start + _ONE_DAY - 1;
 
     if (end < start) {
-      // make sure the end time is greater than start time, otherwise there will be no list to show
       end += _ONE_DAY;
     }
 
@@ -605,7 +579,6 @@
       $.type(settings.timeFormat) === "string" &&
       settings.show2400
     ) {
-      // show a 24:00 option when using military time
       end = _ONE_DAY;
     }
 

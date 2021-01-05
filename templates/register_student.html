@@ -7,7 +7,6 @@
 		<div class="container height">
 			<div class="row">
 				<div class="col-md-6 offset-md-3">
-
 					<h2 class="Login">Öğrenci Kayıt Ekranı</h2><br>
 					<div class="input-group mb-3">
 						<div class="input-group-prepend">
@@ -33,13 +32,15 @@
 						<input type="text" name="last_name" class="form-control" placeholder="Soyisim"
 							aria-label="LastName" aria-describedby="basic-addon1" required>
 					</div>
-					
+
 					<div class="input-group mb-3">
-                              <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1"><i class="fas fa-envelope-square"></i></span>
-                              </div>
-                              <input type="email" name="email" class="form-control" placeholder="E-mail" aria-label="mail" aria-describedby="basic-addon1" required>
-                            </div>
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon1"><i
+									class="fas fa-envelope-square"></i></span>
+						</div>
+						<input type="email" name="email" class="form-control" placeholder="E-mail" aria-label="mail"
+							aria-describedby="basic-addon1" required>
+					</div>
 
 					<div class="input-group mb-3">
 						<div class="input-group-prepend">
@@ -64,7 +65,7 @@
 					</div>
 					{% if messages%}
 					{% for message in messages%}
-					<div class ="alert alert-danger" role="alert">
+					<div class="alert alert-danger" role="alert">
 						{{message}}
 					</div>
 					{% endfor %}

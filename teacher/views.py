@@ -7,19 +7,18 @@ from django.contrib import messages
 from django.contrib.auth.models import Group
 
 
-def teacher(request):#this section for my appointment
-	group_name=Group.objects.all().filter(user = request.user)# get logget user grouped name
-	group_name=str(group_name[0]) # convert to string
+def teacher(request):
+	group_name=Group.objects.all().filter(user = request.user)
+	group_name=str(group_name[0]) 
 	if "Teacher" == group_name:
-		user_name=request.user.get_username()#Getting Username
+		user_name=request.user.get_username()
 
-		#Getting all Post and Filter By Logged UserName
 		appointment_list = Appointment.objects.all().order_by("-id").filter(user=request.user)
-		q=request.GET.get("q")#search start
+		q=request.GET.get("q")
 		if q:
 			appointment_list=appointment_list.filter(appointment_with__icontains=q)
 		else:
-			appointment_list = appointment_list# search end
+			appointment_list = appointment_list
 
 		appointments= {
 		    "query": appointment_list,
@@ -30,22 +29,23 @@ def teacher(request):#this section for my appointment
 		return redirect('http://127.0.0.1:8000/') 
 
 def teacher_appointment_list(request):
-	group_name=Group.objects.all().filter(user = request.user)# get logget user grouped name
-	group_name=str(group_name[0]) # convert to string
+	group_name=Group.objects.all().filter(user = request.user)
+	group_name=str(group_name[0]) 
 	if "Teacher" == group_name:
-		user_name=request.user.get_username()#Getting Username
-
-		#Getting all Post and Filter By Logged UserName
+		user_name=request.user.get_username()
+		full_name = request.user.get_full_name()
+		
 		appointment_list = Appointment.objects.all().order_by("-id").filter(user=request.user)
-		q=request.GET.get("q") #search start
+		q=request.GET.get("q")
 		if q:
 			appointment_list=appointment_list.filter(date__icontains=q)
 		else:
-			appointment_list = appointment_list #search end
+			appointment_list = appointment_list
 
 		appointments= {
 		    "query": appointment_list,
-		    "user_name":user_name,
+		    "user_name":user_name, 
+			"full_name":full_name,
 		    "form":AppointmentForm(),
 		}
 		form = AppointmentForm(request.POST or None)
@@ -61,8 +61,8 @@ def teacher_appointment_list(request):
 
   
 def appointment_delete(request, id):
-	group_name=Group.objects.all().filter(user = request.user)# get logged user grouped name
-	group_name=str(group_name[0]) # convert to string
+	group_name=Group.objects.all().filter(user = request.user)
+	group_name=str(group_name[0]) 
 	if "Teacher" == group_name:
 		single_appointment= Appointment.objects.get(id=id)
 		single_appointment.delete()
@@ -72,18 +72,17 @@ def appointment_delete(request, id):
 		return redirect('http://127.0.0.1:8000/')
 
 def teacher_appointment_update(request,id):
-	group_name=Group.objects.all().filter(user = request.user)# get logget user grouped name
-	group_name=str(group_name[0]) # convert to string
+	group_name=Group.objects.all().filter(user = request.user)
+	group_name=str(group_name[0]) 
 	if "Teacher" == group_name:
-		user_name=request.user.get_username()#Getting Username
+		user_name=request.user.get_username()
 
-		#Getting all Post and Filter By Logged UserName
 		appointment_list = Appointment.objects.all().order_by("-id").filter(user=request.user)
-		q=request.GET.get("q") #search start
+		q=request.GET.get("q") 
 		if q:
 			appointment_list=appointment_list.filter(date__icontains=q)
 		else:
-			appointment_list = appointment_list #search end
+			appointment_list = appointment_list 
 
 		single_appointment=ingle_appointment= Appointment.objects.get(id=id)
 		form = AppointmentForm(request.POST or None, instance=single_appointment)
