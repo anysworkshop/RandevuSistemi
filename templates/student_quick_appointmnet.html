@@ -9,13 +9,13 @@
 
         <div class="row main_boder">
           <div class="col-sm-7">
-            <h3 class="appointmnet_list">Quick Appointmnet</h3>
+            <h3 class="appointmnet_list">Randevu Al</h3>
           </div>
           <div class="col-sm-5">
             <form class="form-inline my-2 my-lg-0" method="GET" action="">
               <input class="form-control mr-sm-2" type="text" name="q" placeholder="Öğretmen Adıyla Ara"
                 placeholder="İsimle Ara" aria-label="Search">
-              <button class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Search">Search</button>
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Search">Ara</button>
             </form>
           </div>
 
@@ -33,12 +33,12 @@
           <tbody>{% for appoint in query %}
             {% if appoint.appointment_with == '' %}
             <tr>
-              <th scope="row">{{appoint.user}}</th>
+              <th scope="row">{{appoint.user.first_name}} {{appoint.user.last_name}}</th>
               <td><img class="avatar" src="http://127.0.0.1:8000/static/css/image/teacher.png"></td>
               <td>{{appoint.date}}</td>
               <td>
                 <span class="inline">{{appoint.time_start}} - {{appoint.time_end}}
-                  {{appoint.room_number}}<a href='{% url "appointment_update" id=appoint.id %}'> <button
+                  <a href='{% url "appointment_update" id=appoint.id %}'> <button
                       class="btn btn-primary" type="submit">Randevu Al</button></a></span>
               </td>
               {% endif %}

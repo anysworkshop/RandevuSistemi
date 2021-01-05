@@ -34,6 +34,7 @@ def student(request):#this section for my appointment
 	group_name=str(group_name[0]) # convert to string
 	if "Student" == group_name:
 		user_name=request.user.get_username()#Getting Username
+		full_name = request.user.get_full_name()
 		#Getting all Post and Filter By Logged UserName
 		appointment_list = Appointment.objects.all().order_by("-id").filter(appointment_with=user_name)
 		q=request.GET.get("q")#search start
@@ -45,6 +46,7 @@ def student(request):#this section for my appointment
 		appointments= {
 		    "query": appointment_list,
 		    "user_name":user_name,    
+			"full_name":full_name,
 		}
 		return render(request, 'student.html', appointments )
 	else:

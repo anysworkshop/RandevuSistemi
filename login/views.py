@@ -7,6 +7,7 @@ from django.urls import path
 from django.conf.urls import url
 from django.contrib.auth import logout
 from django import forms
+from django.contrib import messages
 
 
 def group_check(request):
@@ -50,19 +51,23 @@ def register_student(request):
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
         username = request.POST['username']
+        email1 = request.POST['email']
         password1 = request.POST['password1']
         password2 = request.POST['password2']
 
         if  password1 == password2:
-          user = User.objects.create_user(username = username, password=password1, first_name = first_name,last_name=last_name,is_staff = True)
+          user = User.objects.create_user(username = username, email=email1, password=password1, first_name = first_name,last_name=last_name,is_staff = True)
           user.save()
           user.groups.add(2)
+          messages.success(request,"ERRORRR!!!")
           print('user created')
           return redirect('/')
           #RETURN OLARAK HATA METNİ İLE BİRLİKTE ANASAYFAYA YONLENDİR!
-       
+        
             
-            #raise forms.ValidationError("Your passwords do not match") 
+
+        messages.success(request,"ERRORRR!!!")    
+          #raise forms.ValidationError("Your passwords do not match") 
         return redirect("register_student")
     else:
         return render(request, "register_student.html")
