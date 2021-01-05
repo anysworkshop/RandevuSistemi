@@ -62,7 +62,13 @@
 								target="_blank">KVKK Metnini okudum onaylıyorum.</a></label>
 
 					</div>
-
+					{% if messages%}
+					{% for message in messages%}
+					<div class ="alert alert-danger" role="alert">
+						{{message}}
+					</div>
+					{% endfor %}
+					{% endif %}
 					<div class="input-group mb-3">
 						<input type="submit" class="form-control submit" value="Kayıt Ol" aria-label="submit"
 							aria-describedby="basic-addon1">

@@ -55,19 +55,24 @@ def register_student(request):
         password1 = request.POST['password1']
         password2 = request.POST['password2']
 
+
+      
+        
+        
+
+
         if  password1 == password2:
           user = User.objects.create_user(username = username, email=email1, password=password1, first_name = first_name,last_name=last_name,is_staff = True)
           user.save()
           user.groups.add(2)
-          messages.success(request,"ERRORRR!!!")
           print('user created')
           return redirect('/')
           #RETURN OLARAK HATA METNİ İLE BİRLİKTE ANASAYFAYA YONLENDİR!
-        
-            
+        else : 
+          messages.error(request,"Şifreler Uyuşmuyor!!") 
+          return redirect("register_student")    
 
-        messages.success(request,"ERRORRR!!!")    
           #raise forms.ValidationError("Your passwords do not match") 
-        return redirect("register_student")
+        
     else:
         return render(request, "register_student.html")
